@@ -49,6 +49,18 @@ const textures = [
 ];
 
 const spheres = new THREE.Group();
+
+const starsTextureLoader = new THREE.TextureLoader();
+const starsTexture = starsTextureLoader.load("./stars.jpg"); // make sure this path is correct!
+starsTexture.colorSpace = THREE.SRGBColorSpace
+const starsGeometry = new THREE.SphereGeometry(50, 64, 64);
+const starsMaterial = new THREE.MeshStandardMaterial({
+  map: starsTexture,
+  // transparent: true,
+  opacity:0.1,
+  side: THREE.BackSide,
+});
+
 const spheresMesh = [];
 
 textures.forEach((path, i) => {
