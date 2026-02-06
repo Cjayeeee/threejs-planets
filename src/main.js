@@ -61,6 +61,9 @@ const starsMaterial = new THREE.MeshStandardMaterial({
   side: THREE.BackSide,
 });
 
+const starsSphere = new THREE.Mesh(starsGeometry, starsMaterial);
+scene.add(starsSphere);
+
 const spheresMesh = [];
 
 textures.forEach((path, i) => {
