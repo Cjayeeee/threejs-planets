@@ -115,18 +115,22 @@ window.addEventListener(
 
 /* ---------------- Mobile Touch ---------------- */
 
-let startY = 0;
+let startX = 0;
 
 window.addEventListener("touchstart", (e) => {
-  startY = e.touches[0].clientY;
-});
+  startX = e.touches[0].clientX;
+}, { passive: true });
 
 window.addEventListener("touchend", (e) => {
-  const endY = e.changedTouches[0].clientY;
-  const diff = startY - endY;
-  if (Math.abs(diff) < 50) return;
+  const endX = e.changedTouches[0].clientX;
+  const diff = startX - endX;
+
+  if (Math.abs(diff) < 40) return;
+
+  // swipe left → next
+  // swipe right → previous
   handleScroll(diff > 0 ? 1 : -1);
-});
+}, { passive: true });
 
 /* ---------------- Resize ---------------- */
 
